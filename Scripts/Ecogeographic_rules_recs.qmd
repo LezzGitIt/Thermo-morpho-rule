@@ -83,11 +83,9 @@ This outline is more detailed but less polished compared to the 'abstract' file.
 
 # Background
 
-We are in the Anthropocene — a period of rapid global change dominated by habitat loss and climate change. While many species have not kept pace with these changes and have gone extinct, other species have been able to alter their shapes, sizes, ranges, and behaviors to adjust to this new human-dominated world. Understanding these sub-lethal, plastic or evolutionary responses is critical to understanding humanities’ full impact on biodiversity (CITE Guo, 2025). With this knowledge, we will be better able to forecast changes to the natural world, as well as their impacts on ecosystem service provisioning.
+We are in the Anthropocene — a period of rapid global change dominated by habitat loss and climate change. While many species have not kept pace with these changes and have gone extinct, other species have been able to alter their shapes, sizes, ranges, and behaviors to adjust to this new human-dominated world. Understanding these sub-lethal, plastic or evolutionary responses is critical to understanding humanities’ full impact on biodiversity [@guoApplyingBergmannsRule2025]. With this knowledge, we will be better able to forecast changes to the natural world, as well as their impacts on ecosystem service provisioning.
 
-An organism’s morphology is perhaps the most fundamental determinant of how it interacts with its environment, and thus there are strong selective pressures to ensure that an organism's morphology is well-suited for its environment [pigot CITE]. Thus, scientists have long sought to understand how morphology is shaped by the environment [e.g., @winklerEcomorphologyMigrants1992], and some of the oldest macrogeographical 'rules' attempt to make sense of patterns in body size and shape. For example, Bergmann’s rule posits that individuals or populations of endothermic species tend to be larger in colder climates, presumably to minimize heat loss via a reduced surface-area-to-volume ratio \[CITE Berg\]. The complementary Allen’s rule states that appendages (e.g., limbs, tails, bills) tend to be shorter in colder regions, again reducing heat loss via a decreased surface-area-to-volume ratio \[CITE Allen\].
-
-There is general support for both Bergmann’s and Allen's rules in endotherms - across both space and time, and among diverse taxa, regions, and life-history strategies such as migration and hibernation. Because the underlying processes shaping these spatial and temporal patterns are likely similar, we do not differentiate further between them in this paper. Our recommendations apply equally to both contexts.
+An organism’s morphology is perhaps the most fundamental determinant of how it interacts with its environment, and thus there are strong selective pressures to ensure that an organism's morphology is well-suited for its environment [@pigotMacroevolutionaryConvergenceConnects2020]. Thus, scientists have long sought to understand how morphology is shaped by the environment [e.g., @winklerEcomorphologyMigrants1992], and some of the oldest macrogeographical 'rules' attempt to make sense of patterns in body size and shape. For example, Bergmann’s rule posits that individuals or populations of endothermic species tend to be larger in colder climates, presumably to minimize heat loss via a reduced surface-area-to-volume ratio [@bergmann1848ueber]. The complementary Allen’s rule states that appendages (e.g., limbs, tails, bills) tend to be shorter in colder regions, again reducing heat loss via a decreased surface-area-to-volume ratio [@allen1877influence]. Given that there is generally positive covariance between overall body size and appendage size, most people have interpreted Allen's rule as appendage length *relative* to body size [@rydingMultipleRegressionNot2025]. When interpreted as *relative* appendage length, Allen's rule is inherently multivariate, as authors tend to standardize appendage length by some metric of body size (e.g., body mass). There is general support for both Bergmann’s and Allen's rules in endotherms - across both space and time, and among diverse taxa, regions, and life-history strategies such as migration and hibernation [@ashtonPatternsWithinSpeciesBody2002; @teplitskyClimateWarmingBergmanns2014; @rydingShapeshiftingChangingAnimal2021; @frohlichAllometryRevealsTradeoffs2023].
 
 # Bergmann's rule: Body size across environmental gradients
 
@@ -95,9 +93,33 @@ There is general support for both Bergmann’s and Allen's rules in endotherms -
 
 Bergmann himself used body size as a proxy for an organism’s surface-area-to-volume ratio — likely due to the impracticality of directly measuring surface area and volume in live animals. But what exactly is body size in ecological research?
 
-There are both linear proxies (e.g., tarsus, wing, hindfoot) and volumetric proxies (e.g., body mass), and the strength of their correlation with true body size varies tremendously among taxa. A wide range of studies have proposed different morphological metrics as the most accurate representation of body size. In birds, for example, some suggest wing length (Wiklund, 1996; Gosler et al., 1998; Piersma & Davidson, 1991), others argue for body mass (Blackburn et al., 1999; Freeman & Jackson, 1990; Rising & Somers, 1989), while still others highlight keel, tarsus (Freeman & Jackson, 1990; Senar & Pascual, 1997), or body (Wiklund, 1996) length. Some researchers have advocated for the use of the first axis of a principal component analysis (PCA) of several linear traits as a proxy for body size (Senar & Pascual, 1997), yet others have found that PCA provides little to no improvement over univariate metrics (Gosler et al., 1998).
+There are both linear proxies (e.g., tarsus, wing, hindfoot) and volumetric proxies (e.g., body mass), and their validity as a proxy of body size is context- and taxa- dependent. For example, in birds some have suggested wing length (Wiklund, 1996; Gosler et al., 1998; Piersma & Davidson, 1991) is the best proxy for body size, others argue for body mass (Blackburn et al., 1999; Freeman & Jackson, 1990; Rising & Somers, 1989), while still others highlight keel, tarsus (Freeman & Jackson, 1990; Senar & Pascual, 1997), or body (Wiklund, 1996) length. Some researchers have advocated for the use of the first axis of a principal component analysis (PCA) of several linear traits as a proxy for body size (Senar & Pascual, 1997), yet others have found that PCA provides little to no improvement over univariate metrics (Gosler et al., 1998). Thus, there is no single universal metric for body size, and the choice of metric can greatly influence the results [@teplitskyClimateWarmingBergmanns2014, @baileyUsingDifferentBody2020; @theriotHarnessingNaturalHistory2023].
 
-Given this lack of consensus, and the tenuous relationship between any of these proxies and an organism’s true surface-area-to-volume ratio, we argue that the best approach is to use multiple morphological metrics as complementary (though non-independent) representations of body size. This approach allows researchers to perform multiple tests of morphological response across environmental gradients. In practice, this would likely involve a set of regression models, each with a different morphological trait as the response variable. Although this may result in conflicting signals across traits [e.g., @baileyUsingDifferentBody2020], we contend that this interpretative complexity more accurately reflects the true nature of environment–morphology relationships. Moreover, it presents an opportunity for hypothesis generation - for example, asking why trait A might be more sensitive to temperature than trait B in a given species or region.
+Given this lack of consensus, and the tenuous relationship between any of these proxies and an organism’s true surface-area-to-volume ratio, we argue that the best approach is to use multiple morphological metrics as complementary (though non-independent) representations of body size [@theriotHarnessingNaturalHistory2023]. In practice, this often involves a set of regression models, each with a different morphological trait as the response variable. Although this may result in conflicting signals across traits [e.g., @baileyUsingDifferentBody2020], we contend that this interpretative complexity more accurately reflects the true nature of environment–morphology relationships. Moreover, it presents an opportunity for hypothesis generation - for example, asking why trait A might be more sensitive to temperature than trait B in a given species or region.
+
+# From Bergmann's to Allen's - Allometric scaling
+
+So if Bergman‘s rule is a multivariate endeavor, and frequently involves measurements of both mass and appendage length, what separates questions of Bergman‘s rule from Allen‘s rule? The primary distinction is that Allen’s rule requires tying appendage length and body size together *at the level of the individual* through some sort of allometric relationship (@nte-allometry). This can be done in a multiple regression framework [@rydingMultipleRegressionNot2025], or by adhering to a power law definition [@santoroAllometryEvaluateAllens2022].
+
+::: {#nte-allometry .callout-note}
+## Allometric scaling in studies assessing relative appendage length
+
+Allometry is the study of how biological processes change with body size. Seminal work by CITE Huxley formulated that the scaling relationship between an appendage $Y$ and body size $X$ follows a power-law, where
+
+$$
+Y = \alpha * X^\beta
+$$
+
+On the log scale this function becomes additive
+
+$$
+log(Y) = log(\alpha) + \beta * log(X)\
+$$
+
+where $log(\alpha)$ determines the average relative appendage length for a given body size (the allometric intercept), and $\beta$ determines the rate that the appendage increases with an increase in body size [the allometric slope, @shingletonAllometryStudyBiological2010].
+
+Allometric scaling theory posits that proportional growth of two linear features should increase linearly ($\beta$ = 1), whereas proportional growth of a linear feature and volume should scale inverse cubically ($\beta = 1/3$ i.e. given that organismal volume is three-dimensional, [@raynerFormFunctionAvian1988]). When empirical reality matches theoretical expectations, this is known as isometric scaling [@shingletonAllometryStudyBiological2010]. If the allometric slope exceeds that expected by theory (e.g. $\beta > 1/3$), this is known as hyperallometry (or positive allometry), and when it is is less than expected by theory (e.g. $\beta < 1/3$), this is known as hypoallometry. Importantly, isometric scaling implies that body *shape* remains constant as body size increases, whereas hyper- and hypo- allometry suggest changes in body proportions.
+:::
 
 ```{r}
 #| label: Setup
@@ -223,9 +245,11 @@ Thus, a In the practical study of body size, there are several linear measuremen
 
 Some traits are highly constrained in certain species [e.g., tarsus length in Apodiformes, bill length in Trochilidae and Rallidae; @baldwinComplementarityAllensBergmanns2023]
 
+Because the underlying processes shaping these spatial and temporal patterns are likely similar, we do not differentiate further between them in this paper. Our recommendations apply equally to both contexts.
+
 complementarity; @baldwinComplementarityAllensBergmanns2023, ROODENRIJS et al black oystercatchers
 
-::: {#nte-allometry .callout-note}
+::: callout-note
 Understanding the allometric scaling relationship for a species can aid in interpretation of results. For example, imagine a study using two variables as metrics of body size (wing chord and mass), and a third variable $\text{wing length}^2$ divided by body mass as a more direct metric of the surface area to volume ratio [e.g. @nwaoguTemperatureAridityDetermine2018]. The authors are surprised as the hypothetical species appears to adhere to Bergmann's rule when mass and wing chord are used separately as the response variables, but they find a result contradicting Bergmann's rule when using $\text{wing length}^2$ divided by body mass as the response variable.
 :::
 
