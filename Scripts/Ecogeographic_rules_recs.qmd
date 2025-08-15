@@ -1,0 +1,234 @@
+---
+title: "Beyond Bergmann and Allen: A Unified Framework for Thermoregulatory Morphology"
+number-sections: true
+# If you do not want code to show... echo: false
+execute: 
+ echo: false
+ message: false
+ warning: false 
+format: pdf
+editor: visual
+bibliography: ../Supp_files/EWPW.bib
+link-citations: true
+csl: ../Supp_files/methods-in-ecology-and-evolution.csl
+knitr:
+  opts_chunk: 
+    comment: "#>"
+    collapse: true
+editor_options: 
+  chunk_output_type: console
+---
+
+{{< pagebreak >}}
+
+# Outline
+
+This outline is more detailed but less polished compared to the 'abstract' file.
+
+-   There is no single adequate measure of body size, thus multiple metrics of body size are needed for Berg's rule [@teplitskyClimateWarmingBergmanns2014, @baileyUsingDifferentBody2020; @theriotHarnessingNaturalHistory2023]. Additional challenges in museum specimens @theriotHarnessingNaturalHistory2023
+
+-   Inclusion of allometry in studies of Bergmann's rule can help with interpretation, but is not necessary. Dolphin article, compare allometric slopes between different populations, may aid in generating hypotheses. General reporting of scaling coefficients is helpful \[Warton\], but overall this is a different question.
+
+-   From Bergs to Allens - Allometry; Santoro & Calzada
+
+    -   Inclusion of body size, although there are rare exceptions where this is not necessary
+
+    -   Percent of studies that used absolute appendages
+
+-   Allometric scaling box ? Would probably remove the strict vs more general interpretation piece
+
+-   The Thermo-Morpho Rule:
+
+    -   Define thermo-morpho rule: Irrespective of the taxonomic level of analysis, adherence to the thermo-morpho rule is defined by adherence to Bergmann's, Allen’s, or subtle changes in both
+
+        -   Complementarity: @baldwinComplementarityAllensBergmanns2023 found that changes in body size and relative appendage length were subtle and difficult to detect statistically. Instead, bird families exhibited small changes in both body size and appendage lengths in the directions predicted by Bergmann's and Allen's rules [@baldwinComplementarityAllensBergmanns2023]. More subtle changes in body plan could reduce the negative fitness consequences of extreme changes in either body size [e.g., a reduction in competitive ability @shipleySelectionCounteractsDevelopmental2022], or appendage length (e.g., foraging efficiency CITE van gils, acoustic signalling CITE Sebastianelli)
+
+            -   Draw from figs 1 & 2
+
+    -   'Trade-off hypothesis': Similarly, @frohlichAllometryRevealsTradeoffs2023 drawing from evolutionary compromise theory found evidence for the 'trade-off hypothesis', that 'warmer temperatures tends to be associated either with smaller body size (Bergmann’s rule) or longer beak (Allen’s rule), rather than both rules simultaneously'. Thus, evolution of body size and appendage length are 'interacting ways to cope with thermoregulation', which ‘may explain why many studies fail to detect Allen’s or Bergmann’s rules independently, which has led to questioning of the generality of these ecogeographical patterns’.
+
+    -   BOTH studies help explain failure to detect Allen’s or Bergmann’s rules independently.
+
+-   Looking forward - An integrated model to jointly estimate Bergmann’s and Allen’s rule, similar to that of @frohlichAllometryRevealsTradeoffs2023. They compared 4 hypotheses using causal path analysis:
+
+    1\) Null allometric model: Mass' influence on absolute appendage length
+
+    2\) Bergmann’s rule model: The effects included in the null allometric model + temperature's influence on mass
+
+    3\) Allen’s rule model: The effects included in the null allometric model + temperature's influence on appendage length
+
+    4\) ‘Mixed’ model: The combination of models 1-3 (Allometry + Bergmann's + Allen's rules)
+
+    Interestingly, they found that the Bergmann's and Allen's rules models were about equally supported, suggesting that shifts in size and shape are equally important for thermoregulation in birds.
+
+-   “Outstanding Questions” box is required for TREE
+
+    -   We still lack a clear understanding of how variation in size, shape, or allometric relationships translates into differences in thermoregulatory capacity [@santoroAllometryEvaluateAllens2022; but see @tattersallHeatExchangeToucan2009]. There are both theoretical and experimental lines of evidence suggesting that the observed changes in size and shape provide near-negligible changes in surface area to volume ratios and costs of thermoregulation [@nordShrinkingBodySize2024; @tabhLimitedEvidenceThat2025].
+
+    -   Understanding of the mechanism, whether these effects arise from natural selection, or adaptive vs neutral phenotypic plasticity [@tabhLimitedEvidenceThat2025]
+
+    -   Examination of the influence of size and shape on important ecological and evolutionary outcomes [@shipleySelectionCounteractsDevelopmental2022, CITE van gils]
+
+    -   Continued work on statistical approaches that accurately account for allometric scaling, measurement error [e.g., @romano2025shrinking], and other types of error [e.g., transient fluctuations, @ponziHeritabilitySelectionResponse2018].
+
+    -   Mechanism: Causal modeling
+
+# Abstract
+
+**Background:** Understanding how organismal size and shape vary across environmental gradients is essential for ecology, evolution, and conservation. Yet size and shape are often studied separately, despite their shared functional basis. Of 46 studies published since 2021 examining Bergmann's rule, Allen's rule, or both, nearly half examined Bergmann's or Allen's rule in isolation. A focus on Bergmann's rule in isolation was much more common than focusing on Allen's rule in isolation, likely because Allen's rule is inherently multivariate.
+
+**A unified framework:** I propose retiring the siloed treatment of Bergmann’s and Allen’s rules in favor of a unified framework: the **Thermo-Morpho Rule**, which views size and shape as complementary axes of thermoregulatory adaptation. These "rules" stem from the same biophysical principle - that surface area to volume ratios mediate heat exchange. Even Bergmann's rule benefits from a multi-trait approach, as well as examining trait covariance and allometric relationships (practices usually associated with assessment of Allen's rule). Using simulated data I show that analyzing traits in isolation can obscure ecologically and evolutionarily meaningful patterns. Moreover, empirical evidence suggests a functional tradeoff: species often respond to warming either by decreasing in body size or by increasing relative appendage length, but rarely both. Failing to examine both size and shape risks missing the full spectrum of organismal responses to climate change.
+
+**Conclusions:** Studying size and shape in tandem offers a more biologically meaningful understanding of how morphology tracks climate. In the Anthropocene, where rapid environmental change demands fast and informed decisions, conservationists can’t afford to split hairs over legacy rules. A unified approach - grounded in theory, guided by trait covariance, and aware of allometry - is overdue.
+
+# Background
+
+We are in the Anthropocene — a period of rapid global change dominated by habitat loss and climate change. While many species have not kept pace with these changes and have gone extinct, other species have been able to alter their shapes, sizes, ranges, and behaviors to adjust to this new human-dominated world. Understanding these sub-lethal, plastic or evolutionary responses is critical to understanding humanities’ full impact on biodiversity (CITE Guo, 2025). With this knowledge, we will be better able to forecast changes to the natural world, as well as their impacts on ecosystem service provisioning.
+
+An organism’s morphology is perhaps the most fundamental determinant of how it interacts with its environment, and thus there are strong selective pressures to ensure that an organism's morphology is well-suited for its environment [pigot CITE]. Thus, scientists have long sought to understand how morphology is shaped by the environment [e.g., @winklerEcomorphologyMigrants1992], and some of the oldest macrogeographical 'rules' attempt to make sense of patterns in body size and shape. For example, Bergmann’s rule posits that individuals or populations of endothermic species tend to be larger in colder climates, presumably to minimize heat loss via a reduced surface-area-to-volume ratio \[CITE Berg\]. The complementary Allen’s rule states that appendages (e.g., limbs, tails, bills) tend to be shorter in colder regions, again reducing heat loss via a decreased surface-area-to-volume ratio \[CITE Allen\].
+
+There is general support for both Bergmann’s and Allen's rules in endotherms - across both space and time, and among diverse taxa, regions, and life-history strategies such as migration and hibernation. Because the underlying processes shaping these spatial and temporal patterns are likely similar, we do not differentiate further between them in this paper. Our recommendations apply equally to both contexts.
+
+# Bergmann's rule: Body size across environmental gradients
+
+-   Traits can be highly constrained
+
+Bergmann himself used body size as a proxy for an organism’s surface-area-to-volume ratio — likely due to the impracticality of directly measuring surface area and volume in live animals. But what exactly is body size in ecological research?
+
+There are both linear proxies (e.g., tarsus, wing, hindfoot) and volumetric proxies (e.g., body mass), and the strength of their correlation with true body size varies tremendously among taxa. A wide range of studies have proposed different morphological metrics as the most accurate representation of body size. In birds, for example, some suggest wing length (Wiklund, 1996; Gosler et al., 1998; Piersma & Davidson, 1991), others argue for body mass (Blackburn et al., 1999; Freeman & Jackson, 1990; Rising & Somers, 1989), while still others highlight keel, tarsus (Freeman & Jackson, 1990; Senar & Pascual, 1997), or body (Wiklund, 1996) length. Some researchers have advocated for the use of the first axis of a principal component analysis (PCA) of several linear traits as a proxy for body size (Senar & Pascual, 1997), yet others have found that PCA provides little to no improvement over univariate metrics (Gosler et al., 1998).
+
+Given this lack of consensus, and the tenuous relationship between any of these proxies and an organism’s true surface-area-to-volume ratio, we argue that the best approach is to use multiple morphological metrics as complementary (though non-independent) representations of body size. This approach allows researchers to perform multiple tests of morphological response across environmental gradients. In practice, this would likely involve a set of regression models, each with a different morphological trait as the response variable. Although this may result in conflicting signals across traits [e.g., @baileyUsingDifferentBody2020], we contend that this interpretative complexity more accurately reflects the true nature of environment–morphology relationships. Moreover, it presents an opportunity for hypothesis generation - for example, asking why trait A might be more sensitive to temperature than trait B in a given species or region.
+
+```{r}
+#| label: Setup
+
+# Load libraries
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(smatr)
+library(ggpubr)
+library(cowplot)
+ggplot2::theme_set(theme_cowplot())
+
+# Source functions
+source("Scripts/Key_allometry_fns.R")
+```
+
+```{r}
+#| label: Load-in-format-data
+
+Lr_allens <- read_excel("Lit_review/Methods_ecogeographic_rules_8.12.25.xlsx", 
+                         sheet = "Updated Excel") %>% 
+  clean_names() %>% 
+  filter(include_exclude != "Exclude") %>%
+  dplyr::select(authors, year, journal, bergmann) %>% 
+  mutate(focus = ifelse(bergmann == "Y", "Both", "Allens_only")) %>% 
+  dplyr::select(-bergmann)
+Lr_bergs <- read_excel("Lit_review/Methods_ecogeographic_rules_8.12.25.xlsx", 
+                         sheet = "Bergs studies") %>% 
+  clean_names() %>% 
+  dplyr::select(authors, year, journal, allens) %>% 
+  mutate(focus = ifelse(allens == "Y", "Both", "Bergmanns_only")) %>% 
+  dplyr::select(-allens)
+
+Lr_ecogeo <- bind_rows(Lr_allens, Lr_bergs)
+
+# Prep labeling tbl
+Lr_p <- Lr_ecogeo %>% 
+  summarize(num_studies = n(), .by = c(focus)) %>% 
+  mutate(Tot_studies =  sum(num_studies), 
+         Prop = num_studies / Tot_studies,
+         Per = Prop * 100) %>% 
+  mutate(Per = round(Per, 0),
+         Prop = round(Prop, 2), 
+         Per = paste0(Per, "%"),
+         focus = str_replace(focus, "_", "\n"))
+```
+
+```{r}
+#| label: fig-barplot-in-isolation
+#| fig-cap: Of 46 studies published since 2021 examining Bergmann's rule, Allen's rule, or both, nearly half examined Bergmann's or Allen's rule in isolation. A focus on Bergmann's rule in isolation was much more common than focusing on Allen's rule in isolation, likely because Allen's rule is inherently multivariate. 
+#| fig-height: 6.5
+
+#Plot
+Lr_ecogeo %>% 
+  mutate(focus = str_replace(focus, "_", "\n")) %>% 
+  ggplot() + 
+  geom_bar(aes(x = focus, fill = factor(year)), 
+           color = "black", stat = "count") + 
+   geom_text(
+    data = Lr_p, aes(x = focus, y = num_studies, label = Per),
+    vjust = -0.7, size = 5
+  ) + labs(x = NULL, y = "Frequency", fill = "Year")
+```
+
+# Simulation
+
+```{r}
+#| label: Sim-bergs_rule_conflicting
+
+Ex_df_hypo <- pmap(tibble(b_avg_12 = .22, r_12 = .3, r_13 = -.4, r_23 = -.1), gen_data)[[1]]
+
+# NOTE:: In paper make note that we would know this will happen due to hypoallometry
+
+Ex_df_hypo2 <- Ex_df_hypo %>% mutate(SA_V = Append^2 / Mass) #%>% 
+  #filter(Append > 0 & Mass > 0 & SA_V < 5)
+```
+
+```{r}
+#| label: Confirm-sma-slope
+#| include: false
+
+smatr::sma(Append ~ Mass, data = Ex_df_hypo2)
+ref_slope <- 0.33
+ref_intercept <- mean(Ex_df_hypo2$Append) - ref_slope * mean(Ex_df_hypo2$Mass)
+
+p4 <- ggplot(Ex_df_hypo2, aes(x = Mass, y = Append)) +
+  geom_point(alpha = .4) + 
+  ggpmisc::stat_ma_line(method = "SMA", color = "blue") +
+  geom_abline(slope = 0.33, intercept = ref_intercept, 
+              linetype = "dashed", color = "red")
+```
+
+```{r}
+#| label: fig-bergs_rule_conflicting
+
+p1 <- ggplot(Ex_df_hypo2, aes(x = Temp_inc, y = Append)) +
+  geom_point(alpha = .4) + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  labs(x = "Temperature increase", y = "Appendage") 
+
+p2 <- ggplot(Ex_df_hypo2, aes(x = Temp_inc, y = Mass)) +
+  geom_point(alpha = .4) + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  labs(x = "Temperature increase", y = "Mass")
+
+# We would expect that SA:V would increase as temperature increases, but in this case SA:V decreases
+p3 <- ggplot(Ex_df_hypo2, aes(x = Temp_inc, y = SA_V)) +
+  geom_point(alpha = .4) + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  labs(y = "Surface area to volume", x = "Temperature increase")
+
+ggarrange(p4, p1, p2, p3, nrow = 2, ncol = 2, labels = 'AUTO')
+```
+
+Thus, a In the practical study of body size, there are several linear measurements that are regularly taken when processing birds (e.g., Append length, tarsus length), but body mass is the only metric regularly taken that is proportional to volume. Studies that do use multiple metrics for body size often use one (or more) linear metric, as well as mass, to represent body size, but the relationship between the linear metric and mass is rarely examined empirically.
+
+# Both surface area to volume
+
+-Some articles have considered a decrease in mass while maintaining appendage length as consistent with Allen’s rule -Wing length squared / mass, is this Allen’s or Bergman’s rule?
+
+# Extras
+
+Some traits are highly constrained in certain species [e.g., tarsus length in Apodiformes, bill length in Trochilidae and Rallidae; @baldwinComplementarityAllensBergmanns2023]
+
+complementarity; @baldwinComplementarityAllensBergmanns2023, ROODENRIJS et al black oystercatchers
+
+::: {#nte-allometry .callout-note}
+Understanding the allometric scaling relationship for a species can aid in interpretation of results. For example, imagine a study using two variables as metrics of body size (wing chord and mass), and a third variable $\text{wing length}^2$ divided by body mass as a more direct metric of the surface area to volume ratio [e.g. @nwaoguTemperatureAridityDetermine2018]. The authors are surprised as the hypothetical species appears to adhere to Bergmann's rule when mass and wing chord are used separately as the response variables, but they find a result contradicting Bergmann's rule when using $\text{wing length}^2$ divided by body mass as the response variable.
+:::
+
+{{< pagebreak >}}
+
+# References
