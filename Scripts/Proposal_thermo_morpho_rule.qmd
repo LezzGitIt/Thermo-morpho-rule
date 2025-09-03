@@ -13,7 +13,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Short abstract 
+# Short abstract
 
 106 words - Understanding how organismal size and shape vary across environmental gradients (Bergmann’s and Allen’s rules, respectively) is essential for ecology, evolution, and conservation. Yet these 'legacy rules' are often studied separately, despite a shared functional basis – that surface area to volume ratios mediate heat exchange. I propose retiring the siloed treatment of Bergmann’s and Allen’s rules in favor of a unified framework, the Thermo-Morpho Rule, which views size and shape as complementary axes of thermoregulatory adaptation. In this opinion piece, I highlight recent trends in the analysis of these two legacy rules, as well as empirical evidence highlighting the risk of examining size and shape in isolation.
 
@@ -38,14 +38,14 @@ source("Scripts/Key_allometry_fns.R")
 ```{r}
 #| label: Load-in-format-data
 
-Lr_allens <- read_excel("Lit_review/Methods_ecogeographic_rules_8.12.25.xlsx", 
+Lr_allens <- read_excel("Lit_review/Methods_ecogeographic_rules_8.24.25.xlsx", 
                          sheet = "Updated Excel") %>% 
   clean_names() %>% 
   filter(include_exclude != "Exclude") %>%
   dplyr::select(authors, year, journal, bergmann) %>% 
   mutate(focus = ifelse(bergmann == "Y", "Both", "Allens_only")) %>% 
   dplyr::select(-bergmann)
-Lr_bergs <- read_excel("Lit_review/Methods_ecogeographic_rules_8.12.25.xlsx", 
+Lr_bergs <- read_excel("Lit_review/Methods_ecogeographic_rules_8.24.25.xlsx", 
                          sheet = "Bergs studies") %>% 
   clean_names() %>% 
   dplyr::select(authors, year, journal, allens) %>% 
@@ -68,7 +68,7 @@ Lr_p <- Lr_ecogeo %>%
 
 ```{r}
 #| label: fig-barplot-in-isolation
-#| fig-cap: Of 47 studies published since 2021 examining Bergmann's rule, Allen's rule, or both, nearly half examined Bergmann's or Allen's rule in isolation. A focus on Bergmann's rule in isolation was much more common than focusing on Allen's rule in isolation, likely because Allen's rule is inherently multivariate. 
+#| fig-cap: Of 48 studies published since 2021 examining Bergmann's rule, Allen's rule, or both, nearly half examined Bergmann's or Allen's rule in isolation. A focus on Bergmann's rule in isolation was much more common than focusing on Allen's rule in isolation, likely because Allen's rule is inherently multivariate. 
 #| fig-height: 6.5
 #| fig-pos: 'H' 
 
@@ -98,40 +98,38 @@ Per_both <- pull_per(focus = "Both")
 
 # Point by point summary
 
--   Of `r nrow(Lr_ecogeo)` studies published since 2021 examining Bergmann's rule, Allen's rule, or both, nearly half examined them in isolation. A focus on Bergmann's rule alone (`r Per_berg`) was far more common than on Allen's rule alone (`r Per_allen`), likely because Allen's rule studies often measured appendage length *relative* to body size.
+-   Of `r nrow(Lr_ecogeo)` studies published since 2021 examining Bergmann's rule, Allen's rule, or both, nearly half examined them in isolation.
 
--   The majority of studies examining Bergmann's rule in isolation used multiple traits of body size. Examination of trait covariance (i.e., allometric relationships) was done in \~10% of studies.
+-   The *Thermo-Morpho Rule*, which views size and shape as complementary axes of thermoregulatory adaptation, provides theoretical justification for analyzing Bergmann's and Allen's rules in a unified framework. Adherence to the Thermo-Morpho Rule is defined by adherence to Bergmann's rule, Allen’s rule, or showing coordinated changes in both body size and relative appendage length that together amount to an important change in the surface area to volume ratio.
 
--   Allen's rule, on the other hand, was nearly always tested using metrics of *relative* appendage length (89% of studies), i.e., appendage length controlling for body size. The studies using metrics of *relative* appendage length, either implicitly or explicitly, acknowledge that allometric scaling is critical in the examination of Allen's rule [@santoroAllometryEvaluateAllens2022; @rydingMultipleRegressionNot2025].
+-   Recent empirical evidence supports the unified framework proposed by the Thermo-Morpho Rule. Two recent global analyses of Bergmann's and Allen's rules highlight distinct reasons why it is critical to jointly examine size and shape.
 
--   The Thermo-Morpho Rule, which views size and shape as complementary axes of thermoregulatory adaptation, provides theoretical justification for analyzing Bergmann's and Allen's rules in a unified framework. Adherence to the Thermo-Morpho Rule is defined by adherence to Bergmann's rule, Allen’s rule, or showing coordinated changes in both body size and relative appendage length that together amount to an important change in the surface area to volume ratio.
+    -   Complementarity: @baldwinComplementarityAllensBergmanns2023 found that changes in body size and appendage length were subtle and difficult to detect statistically. Instead, bird families exhibited small, concurrent changes in both traits in the directions predicted by Bergmann's and Allen's rules.
 
--   Recent empirical evidence supports the unified framework proposed by the Thermo-Morpho Rule. Two recent global analyses of Bergammn's and Allen's rules highlight distinct reasons why it is critical to jointly examine size and shape.
-
-    -   Complementarity: @baldwinComplementarityAllensBergmanns2023 found that changes in body size and relative appendage length were subtle and difficult to detect statistically. Instead, bird families exhibited small, concurrent changes in both traits in the directions predicted by Bergmann's and Allen's rules.
+        -   81% of the 107 bird families examined did not conform to either Bergmann’s or Allen’s rules when traits were analyzed independently. The few families that did adhere to ecogeographic rules were likely functionally constrained. For example, species that adhered to Bergmann's rule had less common bill shapes indicating constraints due to foraging [e.g., Trochilidae and Rallidae, @baldwinComplementarityAllensBergmanns2023]
 
     -   The 'Trade-off hypothesis': @frohlichAllometryRevealsTradeoffs2023 show that species often respond to warming either by decreasing in body size or by increasing relative appendage length, but rarely both.
 
-    -   Both of these studies help explain why past studies have found mixed support for Bergmann's and Allen's rules
+        -   Including interactions between size, shape, and temperature is a powerful approach to test the codependency of ecogeographical rules
 
--   Moving forward, I recommend an integrated model to jointly estimate Bergmann’s and Allen’s rule, similar to that of @frohlichAllometryRevealsTradeoffs2023. These authors compared four alternative hypotheses using causal path analysis and found the strongest support for a model incorporating allometry alongside temperature's effects on body size (Bergmann's rule) and appendage length (Allen's rule).
+    -   Both of these studies help explain why past studies have found mixed support for Bergmann's and Allen's rules when studied in isolation.
+
+-   Integrating additional ecogeographical rules that are relevant to thermoregulation is likely important to fully understand the sublethal effects of climate change [@tianPredictingBioticResponses2020]. For example, Bogert's rule - that organisms tend to be darker in cooler environments due to more efficient heat absorption - is important for thermoregulation in Furnariids [in addition to Bergmann's and Allen's rules, @macedoMacroevolutionBodyExtremities2025].
+
+-   Moving forward, I recommend integrated models that jointly estimate Bergmann’s, Allen’s, and potentially other important ecogeographical rules [e.g., @frohlichAllometryRevealsTradeoffs2023; @macedoMacroevolutionBodyExtremities2025].
 
 -   Outstanding Questions
 
-    -   How does variation in size, shape, or allometric relationships translate into differences in thermoregulatory capacity [@santoroAllometryEvaluateAllens2022]? Several studies suggest that changes in size and shape, while widespread, produce near-negligible changes in surface area to volume ratios, and thus, the cost of thermoregulation [@nordShrinkingBodySize2024; @tabhLimitedEvidenceThat2025].
+    -   What separates taxonomic groups that adhere to either Bergmann's *or* Allen's rule, from those that adhere to both rules [e.g., European bats, @paltrinieriEffectsClimateBat2025; Australian shorebirds, @rydingLongShorttermResponses2024], and rarely, from those that adhere to *neither* rule [e.g., @cuiFunctionalAdaptationRather2020]?
 
-    -   What is the mechanism behind observed changes in size and shape? Do these effects arise from natural selection, adaptive plasticity, or neutral plasticity [@tabhLimitedEvidenceThat2025]?
+    -   How do variation in size, shape, or allometric relationships translate into differences in thermoregulatory capacity, given evidence that effects on surface area–volume ratios are often negligible [@santoroAllometryEvaluateAllens2022, @nordShrinkingBodySize2024]?
 
-    -   How does changing size and shape influence important ecological and evolutionary outcomes [e.g., @shipleySelectionCounteractsDevelopmental2022]? How can Bergmann's and Allen's rules be more explicitly incorporated in conservation planning [@guoApplyingBergmannsRule2025]?
+    -   Even if thermoregulatory effects are small, do morphological shifts affect fitness, survival, or reproduction [@shipleySelectionCounteractsDevelopmental2022]?
 
-    -   How can scientists jointly model Allen's and Bergmann's rules while accounting for allometric scaling, measurement error [e.g., @romano2025shrinking], and other types of error (e.g., transient fluctuations).
-
-    -   Why do most taxonomic groups adhere to either Bergmann's or Allen's rule, while others adhere to both Bergmann's and Allen's rules [e.g., European bats, @paltrinieriEffectsClimateBat2025; Australian shorebirds, @rydingLongShorttermResponses2024]?
-
--   Conclusions: Substantial resources go into collecting and analyzing morphological data. In the Anthropocene, where rapid environmental change demands fast, informed decisions, conservationists cannot afford to split hairs over legacy rules. A unified approach - grounded in theory, guided by trait covariance, and aware of allometry - is overdue.
+-   Conclusions: The hyperfocus on classifying trait variation into separate rules is ultimately unhelpful [@goldenbergLinkBodySize2022]. Instead, it is more productive to analyze multiple traits simultaneously in a holistic framework to understand how entire phenotypes respond to temperature and other environmental gradients. Correctly identifying changes in size and shape are important due to their associations with space use, fecundity, generation time, dispersal, and importantly, extinction risk [@guoApplyingBergmannsRule2025]. The Thermo-Morpho rule provides a framework for integrating size and shape in relation to temperature - both theoretically and analytically - to better understand environment-morphology relationships and improve predictions under global change.
 
 # Recent reviews
 
-Several important reviews cover adherence to Bergmann's rule [and lack thereof, @ashtonPatternsWithinSpeciesBody2002], potential mechanisms [@yom-tovRecentSpatialTemporal2011], implications in the face of climate change [@gardnerDecliningBodySize2011; @teplitskyClimateWarmingBergmanns2014]. The only review in the last 3 years of Bergmann's rule was conducted by @theriotHarnessingNaturalHistory2023, although this was specific to museum specimens and reproducibility in specimen-based analyses. @rydingShapeshiftingChangingAnimal2021 is an excellent review of Allen's rule and its applications in the Anthropocene. There have been several empirical global tests of Bergmann's rule [e.g., @he2023global], Allen's rule [e.g. @alhajeriGlobalTestAllens2020], and recent global work has joint analyzed Bergmann's and Allen's rules [@frohlichAllometryRevealsTradeoffs2023; @baldwinComplementarityAllensBergmanns2023], but no review has examined how often they are studied together or proposed a unified framework linking size, shape, and thermoregulatory capacity, as is done here with the Thermo-Morpho Rule.
+Several important reviews cover adherence to Bergmann's rule [and lack thereof, @ashtonPatternsWithinSpeciesBody2002], potential mechanisms [@yom-tovRecentSpatialTemporal2011], and implications in the face of climate change [@gardnerDecliningBodySize2011; @teplitskyClimateWarmingBergmanns2014]. The only review in the last 3 years of Bergmann's rule was conducted by @theriotHarnessingNaturalHistory2023, although this was specific to museum specimens and reproducibility in specimen-based analyses. @rydingShapeshiftingChangingAnimal2021 is an excellent review of Allen's rule and its applications in the Anthropocene. There have been several empirical global tests of Bergmann's rule [e.g., @he2023global], Allen's rule [e.g. @alhajeriGlobalTestAllens2020], and recent global work has jointly analyzed Bergmann's and Allen's rules [@frohlichAllometryRevealsTradeoffs2023; @baldwinComplementarityAllensBergmanns2023]. However, no review has examined how often they are studied together or proposed a unified framework linking size, shape, and thermoregulatory capacity, as is done here with the Thermo-Morpho Rule.
 
 # Key citations
