@@ -23,7 +23,7 @@ editor_options:
 
 # Abstract
 
-Understanding how organismal size and shape vary across environmental gradients is essential in ecology, evolution, and conservation science. Yet size and shape are often studied separately, despite their shared functional basis. Of XX studies published since 2021 examining Bergmann's or Allen's rules, nearly half examined them in isolation. I propose replacing the siloed treatment of Bergmann’s and Allen’s rules with a single conceptual model: the Thermo-Morpho Rule. The Thermo-Morpho Rule views size and shape as complementary axes of thermoregulatory adaptation, both governed by the same biophysical principle – that surface area to volume ratios mediate heat exchange. Finally, I highlight the need for a broader thermo-adaptive framework, given that organisms can respond to increasing temperatures via shifts in physiology, behavior, phenology, or other properties of the fur or feathers. In an era of rapid global change, conservationists can’t afford to split hairs over legacy rules and instead should adopt frameworks that recognize the interdependence of thermoregulatory mechanisms.
+Understanding how animals’ size and shape vary with climate is central to predicting their responses to global change. Yet scientists often study these traits separately, even though both influence heat exchange with the environment. I propose a unifying ecogeographic rule which treats size and shape as complementary strategies for thermoregulation. Finally, I highlight the need for a broader thermo-adaptive framework, given that organisms can respond to increasing temperatures via shifts in physiology, behavior, or other properties of the fur or feathers. Recognizing the interdependence of thermoregulatory mechanisms is critical in an era of rapid global change.
 
 # Introduction
 
@@ -102,11 +102,13 @@ Per_berg <- pull_per(focus = "Bergmanns\nonly")
 Per_both <- pull_per(focus = "Both")
 ```
 
-# Methods 
+I conducted a literature review of empirical studies published in the past 5 years (2021-2025) to determine how often Bergmann's and Allen's rules are examined together versus in isolation. I queried the Web of Science to identify empirical studies testing Bergmann's or Allen's rule in extant species of birds and mammals that examined at least one continuous morphological variable in response to an environmental gradient (e.g., temperature, precipitation) or a proxy (e.g., latitude, elevation, year). The search was conducted on November 4th, 2025, using the following search terms: (TS=(Allen\* OR Bergmann\* OR "morpholog\* change" OR limb\* OR appendage*) AND TS=(bird* OR avian OR aves OR mammal\* OR endotherm\* OR homeotherm*) AND TS=(latitud* OR temperature OR year OR thermoregulat\* OR climat\* OR elevation OR "environmental gradient" OR temporal*)) NOT TS=(fossil* OR paleontolog\* OR Cretaceous OR Jurassic OR Miocene OR Pleistocene) AND DT=(ARTICLE OR "EARLY ACCESS") AND WC=(ECOLOGY OR ZOOLOGY OR "EVOLUTIONARY BIOLOGY" OR BIOLOGY OR "VETERINARY SCIENCES" OR "BIODIVERSITY CONSERVATION" OR ORNITHOLOGY OR "ANATOMY MORPHOLOGY" OR PHYSIOLOGY). The initial query produced 193 studies which were manually reviewed to ensure conformity to the inclusion criteria, of which XX were eliminated. In coding the remaining YY articles, I found an additional ZZ studies that met the criteria for inclusion but had not been identified by the original query, yielding a final corpus of TOTAL \# studies used in the current review.
 
-I conducted a literature review of recent empirical studies . The query on Web of Science was TS=("Bergmann's rule" OR "Allen's rule") AND TS=(bird OR birds OR avian OR aves OR mammal\*), which produced 68 studies. To be included in the review, each study had to \[REMOVE mention Bergmann's or Allen's rule in the title, abstract, introduction, or methods, and had to\] examine at least one continuous morphological variable (e.g., wing length; Mcqueen 2023) in response to an environmental gradient of interest.
+Of `r nrow(Lr_ecogeo)` studies examining Bergmann's or Allen's rules, nearly half examined them in isolation. A focus on Bergmann's rule alone (`r Per_berg`) was far more common than on Allen's rule alone (`r Per_allen`), likely because Allen's rule studies generally measured *relative* appendage length (89% of studies), i.e., appendage length controlling for body size. Thus, Allen's rule is inherently a multivariate endeavor, and at some level, authors are already considering trends in body size across ecological gradients.
 
-Of `r nrow(Lr_ecogeo)` studies published since 2021 examining Bergmann's rule, Allen's rule, or both, nearly half examined them in isolation. A focus on Bergmann's rule alone (`r Per_berg`) was far more common than on Allen's rule alone (`r Per_allen`), likely because Allen's rule studies generally measured *relative* appendage length (89% of studies), i.e., appendage length controlling for body size. Thus, Allen's rule is inherently a multivariate endeavor, and at some level, authors are already considering trends in body size across ecological gradients.
+### Data availability
+
+My coding of the TOTAL studies is available for download in the supporting information. The full set of articles can be examined by reproducing the Web of Science search.
 
 # The need for a combined approach
 
@@ -143,10 +145,6 @@ A natural next step is to formalize a broader *Thermo-Adaptive Framework*, encom
 # Conclusions
 
 Substantial resources go into collecting and analyzing phenotypic data to determine adherence to ecogeographical rules. In the Anthropocene where conservationists must make fast and informed decisions, the hyperfocus on classifying trait variation into separate rules is ultimately unhelpful [@goldenbergLinkBodySize2022]. Instead, analyzing multiple traits simultaneously within a holistic framework offers greater power to understand how entire phenotypes respond to temperature and other environmental gradients. These considerations apply across both intra- and inter- specific scales. Intraspecific analyses can forecast how species will respond to rising temperatures within their ranges and identify vulnerable populations, whereas interspecific analyses can reveal how entire clades respond and highlight groups of organisms particularly susceptible to warming. Ultimately, identifying the phenotypic pathways — whether shifts in morphology, physiology, behavior, or coloration — through which selection operates will enable conservationists to anticipate biological responses in an increasingly warm and human-dominated world. I end with three concrete recommendations for ecographers, conservationists, and evolutionary biologists: 1) stop testing Bergmann's and Allen's rules separately; 2) increase awareness of trade-offs, complementarity, and interactions; and 3) work towards a broader Thermo-Adaptive framework to sharpen predictions of biological responses to a warming world.
-
-# Data availability
-
-All studies included in the literature review are available for download at LINK, and the full list of citations are available in the Supporting Information.
 
 # Acknowledgements
 
