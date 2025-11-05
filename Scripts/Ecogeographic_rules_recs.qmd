@@ -60,21 +60,23 @@ source("Scripts/Key_allometry_fns.R")
 ```{r}
 #| label: Load-in-format-data
 
+# Read in and format
 Lr_allens <- read_excel("Lit_review/Methods_ecogeographic_rules_8.24.25.xlsx", 
                          sheet = "Allens") %>% 
   clean_names() %>% 
   filter(include_exclude != "Exclude") %>%
-  dplyr::select(authors, year, journal, bergmann) %>% 
+  dplyr::select(authors, year, journal, bergmann, url_or_doi) %>% 
   mutate(focus = ifelse(bergmann == "Y", "Both", "Allens_only")) %>% 
   dplyr::select(-bergmann)
 Lr_bergs <- read_excel("Lit_review/Methods_ecogeographic_rules_8.24.25.xlsx", 
                          sheet = "Bergmanns") %>% 
   clean_names() %>% 
   filter(include_exclude != "Exclude") %>%
-  dplyr::select(authors, year, journal, allens) %>% 
+  dplyr::select(authors, year, journal, allens, url_or_doi) %>% 
   mutate(focus = ifelse(allens == "Y", "Both", "Bergmanns_only")) %>% 
   dplyr::select(-allens)
 
+# Bind together 
 Lr_ecogeo <- bind_rows(Lr_allens, Lr_bergs)
 
 # Prep labeling tbl
@@ -87,7 +89,7 @@ Lr_p <- Lr_ecogeo %>%
          Prop = round(Prop, 2), 
          Per = paste0(Per, "%"),
          focus = str_replace(focus, "_", "\n"))
-Lr_p 
+#Lr_p 
 ```
 
 ```{r}
@@ -102,13 +104,45 @@ Per_berg <- pull_per(focus = "Bergmanns\nonly")
 Per_both <- pull_per(focus = "Both")
 ```
 
-I conducted a literature review of empirical studies published in the past 5 years (2021-2025) to determine how often Bergmann's and Allen's rules are examined together versus in isolation. I queried the Web of Science to identify empirical studies testing Bergmann's or Allen's rule in extant species of birds and mammals that examined at least one continuous morphological variable in response to an environmental gradient (e.g., temperature, precipitation) or a proxy (e.g., latitude, elevation, year). The search was conducted on November 4th, 2025, using the following search terms: (TS=(Allen\* OR Bergmann\* OR "morpholog\* change" OR limb\* OR appendage*) AND TS=(bird* OR avian OR aves OR mammal\* OR endotherm\* OR homeotherm*) AND TS=(latitud* OR temperature OR year OR thermoregulat\* OR climat\* OR elevation OR "environmental gradient" OR temporal*)) NOT TS=(fossil* OR paleontolog\* OR Cretaceous OR Jurassic OR Miocene OR Pleistocene) AND DT=(ARTICLE OR "EARLY ACCESS") AND WC=(ECOLOGY OR ZOOLOGY OR "EVOLUTIONARY BIOLOGY" OR BIOLOGY OR "VETERINARY SCIENCES" OR "BIODIVERSITY CONSERVATION" OR ORNITHOLOGY OR "ANATOMY MORPHOLOGY" OR PHYSIOLOGY). The initial query produced 193 studies which were manually reviewed to ensure conformity to the inclusion criteria, of which XX were eliminated. In coding the remaining YY articles, I found an additional ZZ studies that met the criteria for inclusion but had not been identified by the original query, yielding a final corpus of TOTAL \# studies used in the current review.
+```{r}
+#| label: WOS-query
+#| include: false
+
+# Function to extract DOI from a URL or string
+extract_doi <- function(x) {
+  str_to_lower(
+    str_extract(x, "10\\.\\d{4,9}/[-._;()/:A-Za-z0-9]+")
+  )
+}
+
+Lr_ecogeo2 <- Lr_ecogeo %>% mutate(doi_clean = extract_doi(url_or_doi))
+
+# Load in references from Web of science (WOS)
+Wos_refs <- read_excel("/Users/aaronskinner/Downloads/Saved_recs_wos2.xls") %>%
+  clean_names() %>% 
+  rename(journal = source_title) %>%
+  dplyr::select(authors, article_title, journal, publication_year, doi, author_keywords, keywords_plus) %>%
+  mutate(doi_clean = extract_doi(doi))
+
+# Examine which references were not picked up by the WOS search
+missing_refs <- Lr_ecogeo2 %>%
+  anti_join(Wos_refs[,c("doi_clean")], #, "author_keywords", "keywords_plus"
+             by = "doi_clean") #%>%
+  #mutate(found_in_WoS = !is.na(article_title))
+missing_refs 
+
+## Missing
+nrow(missing_refs) # Missing refs
+nrow(missing_refs) / nrow(Lr_ecogeo2) # Proportion missing 
+```
+
+I conducted a literature review of empirical studies published in the past 5 years (2021-2025) to determine how often Bergmann's and Allen's rules are examined together versus in isolation. I queried the Web of Science to identify empirical studies testing Bergmann's or Allen's rule in extant species of birds and mammals that examined at least one continuous morphological variable in response to an environmental gradient (e.g., temperature, precipitation) or a proxy (e.g., latitude, elevation, year). The search was conducted on November 4th, 2025, using the following search terms: (TS=(Allen\* OR Bergmann\* OR "ecogeographic\* rule*" OR "biogeographic* rule" OR "morpholog\* change*") AND TS=(*bird\* OR avian OR aves OR passerine\* OR primate\* OR rodent\* OR carnivore\* OR bat\* OR chiroptera OR "small mammal*" OR mammal* OR endotherm\* OR homeotherm*) AND TS=(temperature OR "thermal adaptation" OR latitud* OR elevation\* OR year\* OR thermoregulat\* OR "climat\* change" OR "global change" OR "climat\* warming" OR "environmental gradient" OR temporal*)) NOT TS=(fossil* OR paleontolog\* OR Cretaceous OR Jurassic OR Miocene OR Pleistocene) AND DT=(ARTICLE OR "EARLY ACCESS") AND WC=(ECOLOGY OR ZOOLOGY OR "EVOLUTIONARY BIOLOGY" OR BIOLOGY OR "VETERINARY SCIENCES" OR "BIODIVERSITY CONSERVATION" OR ORNITHOLOGY OR "ANATOMY MORPHOLOGY" OR PHYSIOLOGY). The initial query produced 193 studies which were manually reviewed to ensure conformity to the inclusion criteria, of which XX were eliminated. In coding the remaining YY articles, I found an additional ZZ studies that met the criteria for inclusion but had not been identified by the original query, yielding a final corpus of TOTAL \# studies used in the current review.
 
 Of `r nrow(Lr_ecogeo)` studies examining Bergmann's or Allen's rules, nearly half examined them in isolation. A focus on Bergmann's rule alone (`r Per_berg`) was far more common than on Allen's rule alone (`r Per_allen`), likely because Allen's rule studies generally measured *relative* appendage length (89% of studies), i.e., appendage length controlling for body size. Thus, Allen's rule is inherently a multivariate endeavor, and at some level, authors are already considering trends in body size across ecological gradients.
 
-### Data availability
+## Data availability
 
-My coding of the TOTAL studies is available for download in the supporting information. The full set of articles can be examined by reproducing the Web of Science search.
+My coding of the TOTAL studies is available for download in the supporting information. The full set of articles can be examined by reproducing the [Web of Science search](https://www.webofscience.com/wos/woscc/summary/731929ac-a1d3-4929-b0cd-0bd95413d16e-01861d5cd0/relevance/1).
 
 # The need for a combined approach
 
@@ -128,12 +162,6 @@ Analytically, the joint examination of Bergmann's and Allen's rule can allow for
 
 The Thermo-Morpho Rule views size and shape as complementary axes of thermoregulatory adaptation, providing theoretical justification for analyzing Bergmann’s and Allen’s rules in tandem. Adherence to this rule occurs when species follow Bergmann’s rule, Allen’s rule, or exhibit coordinated changes in body size and appendage length that together alter the surface area–to–volume ratio. This unified framework formalizes the idea that both size and shape contribute to thermoregulatory efficiency, and that evolution may act on either or both traits depending on functional constraints [@frohlichAllometryRevealsTradeoffs2023; @baldwinComplementarityAllensBergmanns2023]. The lack of studies incorporating the Thermo-Morpho rule helps explain why Bergmann’s and Allen’s rules have yielded mixed or contradictory results [@fanBergmannsRuleAllens2019; @stevensonAllensRuleNorth1986; @geistBergmannsRuleInvalid1987; @cuiFunctionalAdaptationRather2020].
 
-## An integrated model
-
-Moving forward, I recommend integrated models that jointly estimate Bergmann’s, Allen’s, and potentially other important ecogeographical rules [@fig-path-diagram, e.g., @frohlichAllometryRevealsTradeoffs2023]. For example, @macedoMacroevolutionBodyExtremities2025 compared hypotheses using phylogentically-controlled causal path analysis and found the strongest support for a model incorporating allometry alongside temperature's effects on body size (Bergmann's rule), appendage length (Allen's rule), and coloration of bare parts (Bogert’s rule).
-
-![Path diagram showing a hypothetical model that jointly tests Allen's and Bergmann's rule. Ovals represent latent variables and rectangles represent measured variables. M1 - M3 represent multiple measurements of mass at an appropriate time scale; A1 - A3 represent three distinct appendages (e.g., tarsus, wing, and bill length). Intercepts and residual errors are implied and thus not shown. Importantly, this framework could easily be extended to test additional hypotheses related to physiology, coloration, or behavior.](../Figures/path_diagram.pdf){#fig-path-diagram}
-
 ## Beyond morphology: Toward an integrative thermoregulatory framework
 
 Thermoregulation extends beyond morphology, as organisms can respond to increasing temperatures through shifts in physiology, behavior, phenology, or other properties of the fur or feathers [e.g. coloration, @millienEcotypicVariationContext2006; @mayrGeographicalCharacterGradients1956]. For instance, Bogert’s rule (the “thermal melanism hypothesis”) posits that darker individuals are favored in cooler environments because dark integuments absorb heat more efficiently [@bogertThermoregulationReptilesFactor1949; @clusella-trullasTestingThermalMelanism2008]. Likewise, Hesse’s rule proposes that relative organ size, particularly the heart and lungs, increases in cooler climates to sustain higher metabolic demands [@mullerRelativeHeartSize2014], implying that warming climates could lead to smaller relative organ sizes as metabolic rates decline [@seebacherResponsesTemperatureVariation2009].
@@ -141,6 +169,12 @@ Thermoregulation extends beyond morphology, as organisms can respond to increasi
 The potential for trade-offs, complementarity, and interactions is not restricted to Bergmann's and Allen's rules, but is likely applicable to any of the adaptive thermoregulatory approaches mentioned above. For instance, woodrats (*Neotoma*) lack specialized adaptations to extreme heat despite living in desert environments, thus, their body size is extremely sensitive to temperature gradients [@brownBergmannsRuleClimatic1969; @smithPredictingWoodratNeotoma2006; [@millienEcotypicVariationContext2006]. This implies a trade-off between body size evolution and physiological adaptations common to desert species. Similarly, @mollerMorphologicalConstraintsChanging2017 showed that birds with high aspect ratios were unable to adapt their migration phenology as readily as those with low aspect ratios, suggesting a trade-off between morphological and phenological adaptation mechanisms. Empirical and simulated work has shown that size and the properties of pelage (e.g., fur depth) act complementarily to meet thermoregulatory needs in mammals [@briscoeBergmannMeetsScholander2015; @reynoldsEffectsBodySize1993]. Finally, several studies have documented interactions between morphology and behavior. Indeed, the relative appendage length of shorebirds moderated thermoregulatory behaviors, such that those with longer bills and legs exposed them to the environment more often to facilitate dry heat transfer [@pavlovicMorphologyGeographyPredict2019; @ryelandBillSizeMediates2017; @ryelandLegLengthTemperature2019; @playa-montmanyBehaviouralPhysiologicalResponses2023]. Other behaviors like migration, torpor, hibernation, habitat selection and structure, and nocturnality could also mediate the thermal environment experienced by wildlife \[@he2023global; @brivioSeekingTemporalRefugia2024; @jirinecLightThermalNiches2022; @bonebrakeClimateChangeThermoregulatory2020\]. These studies suggest that any trait under thermoregulatory selection could act in concert with, or in place of, morphological adaptation [@clarkeScalingBasalMetabolic2010; @tianPredictingBioticResponses2020].
 
 A natural next step is to formalize a broader *Thermo-Adaptive Framework*, encompassing how thermal gradients jointly shape morphology, physiology, coloration, and behavior. The Thermo-Adaptive Framework is best viewed as a conceptual scaffold linking thermoregulatory function across traits. It is not an explicit rule that can be tested in the way that the Thermo-Morpho rule could be, but instead its purpose to raise awareness of trade-offs, complementarity, and interactions amongst adaptive thermoregulatory approaches. Such an approach will require data that are not yet routinely collected, but, as with morphological databases [@tobiasAVONETMorphologicalEcological2022], comparable datasets on physiological and color traits are rapidly emerging (e.g., [Project Plumage](https://www.nhm.ac.uk/take-part/monitor-and-encourage-nature/project-archive/project-plumage.html)). By integrating across these phenotypic and behavioral axes, we can move toward a more complete understanding of how organisms meet the thermoregulatory challenges of a warming world [@guoApplyingBergmannsRule2025].
+
+## An integrated model
+
+Moving forward, I recommend integrated models that jointly estimate Bergmann’s, Allen’s, and potentially other important ecogeographical rules [@fig-path-diagram, e.g., @frohlichAllometryRevealsTradeoffs2023]. For example, @macedoMacroevolutionBodyExtremities2025 compared hypotheses using phylogentically-controlled causal path analysis and found the strongest support for a model incorporating allometry alongside temperature's effects on body size (Bergmann's rule), appendage length (Allen's rule), and coloration of bare parts (Bogert’s rule).
+
+![Path diagram showing a hypothetical model that jointly tests Allen's and Bergmann's rule. Ovals represent latent variables and rectangles represent measured variables. M1 - M3 represent multiple measurements of mass at an appropriate time scale; A1 - A3 represent three distinct appendages (e.g., tarsus, wing, and bill length). Intercepts and residual errors are implied and thus not shown. Importantly, this framework could easily be extended to test additional hypotheses related to physiology, coloration, or behavior.](../Figures/path_diagram.pdf){#fig-path-diagram alt="Path diagram showing a hypothetical model that jointly tests Allen's and Bergmann's rule. Ovals represent latent variables and rectangles represent measured variables. M1 - M3 represent multiple measurements of mass at an appropriate time scale; A1 - A3 represent three distinct appendages (e.g., tarsus, wing, and bill length). Intercepts and residual errors are implied and thus not shown. Importantly, this framework could easily be extended to test additional hypotheses related to physiology, coloration, or behavior."}
 
 # Conclusions
 
