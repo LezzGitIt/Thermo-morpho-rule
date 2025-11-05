@@ -239,58 +239,6 @@ Thank you to Justin Baldwin and Arkadiusz Fröhlich for permitting the use of th
 
 -   Include precipitation in models too as precipitation is also changing rapidly under climate change [@macedoMacroevolutionBodyExtremities2025], (Benham & Bowie, 2021 - The influence of spatially heterogeneous anthropogenic change on bill size evolution in a coastal songbird)
 
-## Simulation
-
-```{r}
-#| label: Sim-bergs_rule_conflicting
-
-Ex_df_hypo <- pmap(tibble(b_avg_12 = .22, r_12 = .3, r_13 = -.4, r_23 = -.1), gen_data)[[1]]
-
-# NOTE:: In paper make note that we would know this will happen due to hypoallometry
-
-Ex_df_hypo2 <- Ex_df_hypo %>% mutate(SA_V = Append^2 / Mass) #%>% 
-  #filter(Append > 0 & Mass > 0 & SA_V < 5)
-```
-
-```{r}
-#| label: Confirm-sma-slope
-#| include: false
-
-smatr::sma(Append ~ Mass, data = Ex_df_hypo2)
-ref_slope <- 0.33
-ref_intercept <- mean(Ex_df_hypo2$Append) - ref_slope * mean(Ex_df_hypo2$Mass)
-
-p4 <- ggplot(Ex_df_hypo2, aes(x = Mass, y = Append)) +
-  geom_point(alpha = .4) + 
-  ggpmisc::stat_ma_line(method = "SMA", color = "blue") +
-  geom_abline(slope = 0.33, intercept = ref_intercept, 
-              linetype = "dashed", color = "red")
-```
-
-```{r}
-#| label: fig-bergs_rule_conflicting
-
-p1 <- ggplot(Ex_df_hypo2, aes(x = Temp_inc, y = Append)) +
-  geom_point(alpha = .4) + 
-  geom_smooth(method = "lm", se = FALSE) + 
-  labs(x = "Temperature increase", y = "Appendage") 
-
-p2 <- ggplot(Ex_df_hypo2, aes(x = Temp_inc, y = Mass)) +
-  geom_point(alpha = .4) + 
-  geom_smooth(method = "lm", se = FALSE) + 
-  labs(x = "Temperature increase", y = "Mass")
-
-# We would expect that SA:V would increase as temperature increases, but in this case SA:V decreases
-p3 <- ggplot(Ex_df_hypo2, aes(x = Temp_inc, y = SA_V)) +
-  geom_point(alpha = .4) + 
-  geom_smooth(method = "lm", se = FALSE) + 
-  labs(y = "Surface area to volume", x = "Temperature increase")
-
-ggarrange(p4, p1, p2, p3, nrow = 2, ncol = 2, labels = 'AUTO')
-```
-
-Understanding the allometric scaling relationship for a species can aid in interpretation of results. For example, imagine a study using two variables as metrics of body size (wing chord and mass), and a third variable $\text{wing length}^2$ divided by body mass as a more direct metric of the surface area to volume ratio \[e.g. nwaoguTemperatureAridityDetermine2018\]. The authors are surprised as the hypothetical species appears to adhere to Bergmann's rule when mass and wing chord are used separately as the response variables, but they find a result contradicting Bergmann's rule when using $\text{wing length}^2$ divided by body mass as the response variable.
-
 ## General
 
 The inclusion of interactions between temperature, size, and shape can reveal the co-evolution of thermoregulatory strategies in wildlife.
