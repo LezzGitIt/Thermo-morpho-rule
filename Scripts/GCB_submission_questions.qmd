@@ -1,0 +1,75 @@
+---
+title: "Submission questions"
+format: pdf
+editor: visual
+toc: false
+bibliography: ../Suppfiles/Morphology.bib
+link-citations: true
+csl: ../Suppfiles/methods-in-ecology-and-evolution.csl
+---
+
+# Important note 
+
+There is conflicting information on the [author guidelines page](https://onlinelibrary.wiley.com/page/journal/13652486/homepage/forauthors.html#3) and the [submission checklist](https://onlinelibrary.wiley.com/pb-assets/assets/13652486/docs/GCB-initial-submission-checklist-DEC%202025-1764746800740.pdf) regarding an opinion vs a perspective. In essence, they are switched, such that the author guidelines page says that opinion articles should be 3000-5000 words and perspectives are \<1,500 words. This is reversed on the submission checklist.
+
+**I am submitting the present paper as the 3000-5000 word option.**
+
+# Author information
+
+Aaron A Skinner, <https://orcid.org/0000-0002-7756-677X>
+
+Biodiversity Research Centre, University of British Columbia, Canada
+
+skinnerayayron93\@gmail.com, +1-604-831-6068
+
+# Questions & answers
+
+1.  What scientific question is addressed in this manuscript?
+
+This manuscript asks how often Bergmann’s and Allen’s rules are analyzed jointly versus separately, what is missed when they are treated in isolation, and whether the same thermoregulatory principles extend beyond morphology to other adaptive responses to temperature.
+
+2.  What is/are the key finding(s) that answer this question?
+
+I show that half of recent studies analyze Bergmann’s and Allen’s rules in isolation, overlooking three processes linking size and shape: trade-offs, complementarity, and interactions. I also provide evidence that these same principles apply to physiology, coloration, phenology, and behavior in shaping thermoregulatory responses.
+
+3.  Why is this work important and timely?
+
+The present review is the first to document that separate analyses of Bergmann’s and Allen’s rules are widespread and persistent. I highlight the shortcoming of their isolated treatment, propose a unifying framework linking size, shape and thermoregulatory capacity, and provide methodological recommendations for advancing understanding in an era of rapid climate change.
+
+4.  Describe how your paper fits within the scope of GCB.
+
+This paper synthesizes recent research to identify a major methodological limitation in how thermal adaptation is studied. It proposes an integrative framework and argues for a shift away from isolated analyses of ecogeographical rules, providing clear guidance for future work on biological responses to global climate change.
+
+5.  What biological AND global change aspects does it address?
+
+This paper focuses on species resilience in the face of global climate change, by examining coordinated responses in size and shape (morphology), as well as physiology, coloration, phenology, and behavior. It emphasizes how multiple traits interact to regulate heat exchange, shaping resilience and vulnerability to changing thermal environments.
+
+6.  What are the three most recently published papers that are relevant to this manuscript?
+
+Baldwin, J.W., Garcia-Porta, J. & Botero, C.A. (2023) Complementarity in Allen’s and Bergmann’s rules among birds. *Nature Communications*, **14**, 4240.
+
+Frӧhlich, A., Kotowska, D., Martyka, R. & Symonds, M.R.E. (2023) Allometry reveals trade-offs between Bergmann’s and Allen’s rules, and different avian adaptive strategies for thermoregulation. *Nature Communications*, **14**, 1101.
+
+Ryding, S., McQueen, A., Klaassen, M., Tattersall, G.J. & Symonds, M.R.E. (2024) Long‐ and short‐term responses to climate change in body and appendage size of diverse Australian birds. *Global Change Biology*, **30**, e17517.
+
+7.  Provide the name and institutional email addresses of 5 potential reviewers.
+
+    Possible reviewers:
+
+    -Sarah Ryding, s.ryding\@deakin.edu.au
+
+    -Alexandra McQueen, [a.mcqueen\@deakin.edu.au](mailto:a.mcqueen@deakin.edu.au)
+
+    -Andrea Romano, [andrea.romano\@unimi.it](mailto:andrea.romano@unimi.it)
+
+    -Benjamin M. Winger, wingerb\@umich.edu
+
+    -Shahar Dubiner, dubiner\@mail.tau.ac.il
+
+    Additional
+
+    -Vitek Jirinec, vjirinec\@iercecology.org
+
+    -Brian Weeks, bcweeks\@umich.edu
+
+Justin Baldwin, Arkadiusz Fröhlich and Casey Youngflesh would also be excellent choices given their expertise. However, in the interest of full disclosure, I have been in touch with each of them regarding the specifics of this paper or more broadly the ideas put forth in this paper, which might or might not be germane to your decision about their appropriateness as reviewers.
