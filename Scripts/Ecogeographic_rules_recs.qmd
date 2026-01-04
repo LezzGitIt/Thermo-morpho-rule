@@ -1,29 +1,40 @@
 ---
 title: "Beyond Bergmann and Allen: A Unified Framework for Thermoregulatory Morphology"
-number-sections: true
 # If you do not want code to show... echo: false
 execute: 
  echo: false
  message: false
  warning: false
-format: pdf
+format:
+  docx:
+    header-includes:
+      - |
+        \usepackage{fancyhdr}
+        \pagestyle{fancy}
+        \fancyhead[R]{Thermo-Morpho Rule in a Warming World}
+        \usepackage{makecell}
+        \usepackage{lineno}
+        \linenumbers
+        \usepackage[margin=1in]{geometry}
+        \setlength{\LTleft}{\fill}
+        \setlength{\LTright}{\fill}
+    journal:
+      name: Global Change Biology
+      formatting: doubleblind
+      cite-style: authoryear
 editor: visual
-bibliography: ../Supp_files/Morphology.bib
-link-citations: true
-csl: ../Supp_files/methods-in-ecology-and-evolution.csl
-knitr:
-  opts_chunk: 
-    comment: "#>"
-    collapse: true
+bibliography: ../Suppfiles/Morphology.bib
+metadata-files: 
+  - ../Suppfiles/abstract_keywords.yml
 editor_options: 
   chunk_output_type: console
 ---
 
+# Keywords
+
+Bergmann's rule, Allen's rule, thermoregulation, thermal ecology, ecogeography, Thermo-morpho rule, climate change adaptation, complementarity, trade-offs, review
+
 {{< pagebreak >}}
-
-# Abstract
-
-Understanding how animals’ size and shape vary with climate is central to predicting their responses to global change. Yet scientists often study these traits separately, even though both traits influence heat exchange with the environment. I propose a unifying ecogeographic rule which treats adaptation of size and shape as complementary strategies for thermoregulation. Finally, I highlight the need for a broader thermo-adaptive framework, given that organisms can also respond to increasing temperatures via shifts in physiology, behavior, or other properties of the fur or feathers. Recognizing the interdependence of thermoregulatory mechanisms is critical in an era of rapid global change.
 
 # Introduction
 
